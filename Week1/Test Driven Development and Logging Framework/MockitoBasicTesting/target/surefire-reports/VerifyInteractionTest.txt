@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: MyServiceTest
+Test set: VerifyInteractionTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.075 s -- in MyServiceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in VerifyInteractionTest
