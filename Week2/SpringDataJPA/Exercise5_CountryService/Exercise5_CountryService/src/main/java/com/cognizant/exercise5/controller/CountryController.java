@@ -5,6 +5,8 @@ import com.cognizant.exercise5.exception.CountryNotFoundException;
 import com.cognizant.exercise5.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,5 +26,10 @@ public class CountryController {
             throws CountryNotFoundException {
 
         return countryService.findCountryByCode(code);
+
+    }
+    @PostMapping("/countries")
+    public Country addCountry(@RequestBody Country country) {
+        return countryService.addCountry(country);
     }
 }
