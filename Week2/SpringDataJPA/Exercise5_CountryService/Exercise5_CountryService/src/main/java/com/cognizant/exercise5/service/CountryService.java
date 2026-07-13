@@ -5,6 +5,8 @@ import com.cognizant.exercise5.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Optional;
+import com.cognizant.exercise5.exception.CountryNotFoundException;
 
 import java.util.List;
 
@@ -17,5 +19,16 @@ public class CountryService {
     @Transactional(readOnly = true)
     public List<Country> getAllCountries() {
         return countryRepository.findAll();
+    }
+    @Transactional(readOnly = true)
+    public Country findCountryByCode(String countryCode) throws CountryNotFoundException {
+
+        Optional<Country> result = countryRepository.findById(countryCode);
+
+        if (result.isEmpty()) {
+            throw new CountryNotFoundException("Country not found");
+        }
+
+        return result.get();
     }
 }
