@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 
@@ -37,5 +38,12 @@ public class CountryController {
             throws CountryNotFoundException {
 
         return countryService.updateCountry(country);
+    }
+    @DeleteMapping("/countries/{code}")
+    public String deleteCountry(@PathVariable String code)
+            throws CountryNotFoundException {
+
+        countryService.deleteCountry(code);
+        return "Country deleted successfully";
     }
 }

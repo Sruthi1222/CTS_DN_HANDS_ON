@@ -44,4 +44,13 @@ public class CountryService {
 
         return countryRepository.save(country);
     }
+    @Transactional
+    public void deleteCountry(String countryCode) throws CountryNotFoundException {
+
+        if (!countryRepository.existsById(countryCode)) {
+            throw new CountryNotFoundException("Country not found");
+        }
+
+        countryRepository.deleteById(countryCode);
+    }
 }
