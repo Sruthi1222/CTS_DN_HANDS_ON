@@ -32,4 +32,10 @@ public class CountryController {
     public Country addCountry(@RequestBody Country country) {
         return countryService.addCountry(country);
     }
+    @PutMapping("/countries")
+    public Country updateCountry(@RequestBody Country country)
+            throws CountryNotFoundException {
+
+        return countryService.updateCountry(country);
+    }
 }

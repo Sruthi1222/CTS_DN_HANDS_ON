@@ -35,4 +35,13 @@ public class CountryService {
     public Country addCountry(Country country) {
         return countryRepository.save(country);
     }
+    @Transactional
+    public Country updateCountry(Country country) throws CountryNotFoundException {
+
+        if (!countryRepository.existsById(country.getCode())) {
+            throw new CountryNotFoundException("Country not found");
+        }
+
+        return countryRepository.save(country);
+    }
 }
